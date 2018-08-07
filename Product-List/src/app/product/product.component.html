@@ -1,0 +1,29 @@
+<body>
+  <h2>List Of Product</h2>
+    <div>
+      <div>
+        <button routerLink="/create">Create Product</button>
+      </div>
+      <br>
+      <table border="1">
+          <tr>
+            <th>id</th>
+            <th>ProductId</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+
+          </tr>
+          <tr *ngFor="let product of products">
+           <td>{{product.id}}</td>
+           <td>{{product.product_id}}</td>
+           <td>{{product.name}}</td>
+           <td>{{product.price}}</td>
+           <td>
+             <button routerLink="/update/{{product.id}}">Edit</button>
+             <button (click)="delete(product.id)">Delete</button>
+           </td>
+          </tr>
+      </table>
+    </div>
+  </body>

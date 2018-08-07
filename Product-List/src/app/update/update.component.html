@@ -1,0 +1,32 @@
+    <body>
+      <div>
+        <form>
+            <h2>Update Form</h2>
+        <div *ngIf="product">
+            <div>
+                id: <span>{{product.id}}</span> 
+              </div>
+        
+              <div>
+                  <label>Product Id</label>
+                  <input type="number" id="productId" name="productId" [(ngModel)]="product.product_id" placeholder="ProductId"> 
+              </div>
+        
+              <div>
+                  <label>Name</label>
+                  <input type="text" id="name" name="name" [(ngModel)]="product.name" placeholder="Name"> 
+              </div>
+        
+              <div>
+                  <label>Price</label>
+                  <input type="number" id="Price" name="Price" [(ngModel)]="product.price" placeholder="Price"> 
+              </div>
+        </div>
+          <br>
+          <div>
+              <button value="submit" (click)="goBack()">Back</button>
+          </div>
+        </form>
+      </div>
+    </body>
+    
