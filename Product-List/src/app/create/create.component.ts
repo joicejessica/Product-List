@@ -1,42 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { PRODUCTS } from '../data-product';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { Identifiers } from '@angular/compiler';
+// import { Identifiers } from '@angular/compiler';
+// import { SelectItem } from 'primeng/components/common/api';
+import { Message } from 'primeng/components/common/api';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  providers: [MessageService]
 })
 
 export class CreateComponent implements OnInit {
 
-  inputId: number;
-  inputName: string;
-  inputPrice: number;
-  inputProductid: number;
-
-  products: Product[]; 
+  productform: FormGroup;
+  submitted: boolean;
+  isNull = '';
+  msgs: Message[] = [];
+  products: Product[];
+  product: Product = new Product();
   
   constructor(private location: Location,
-              private productService: ProductService) { }
+              private productService: ProductService,
+              private messageService: MessageService,
+              private fb: FormBuilder) {}
+        
 
   ngOnInit() {
+    this.productform = this.fb.group({
+      'productId': new FormControl('', Validators.required),
+      'name': new FormControl('', Validators.required),
+      'price': new FormControl('', Validators.required)
+    });
   }
 
-  create()
+  create(value: string)
   {
-    PRODUCTS.push({
-      id: this.inputId,
-      name: this.inputName,
-      price: this.inputPrice,
-      product_id: this.inputProductid
-    })
-    console.log(PRODUCTS);
-    // this.products = this.productService.getProduct();
-
+    this.submitted = true;
+    this.messageService.add({severity:'success', detail:'Create Product Success!!'});
+    this.productService.createProduct(this.product).subscribe(
+        product => {this.product = product}
+    );
+    console.log(this.product)
   }
 
   goBack()

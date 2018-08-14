@@ -1,0 +1,25 @@
+<div style="width: 30%">
+        <p-panel header="Please Login">
+                <div name="login">
+                    <div class="row">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input [(ngModel)]="email" type="email" size="30" pInputText placeholder="Email"> 
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input [(ngModel)]="password" type="password" size="30" pInputText placeholder="Password"> 
+                        </div>
+                    </div>
+        
+                    <div style="text-align: center">
+                        <p>Dont have an account yet? <a href="/registration"> Register</a></p>
+                        <button value="submit" (click)="login()" pButton type="button" label="Login" class="ui-button-raised ui-button-success"></button>    
+                    </div>
+                </div>
+        </p-panel>
+    </div>
+    

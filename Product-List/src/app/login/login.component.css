@@ -1,0 +1,23 @@
+h3{
+    text-align: center;
+}
+
+div{
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+button{
+    margin-top: 10px;
+    width: 275px;
+}
+
+[name="login"]{
+    margin-top: 30px;
+}
+
+[style="width: 30%"]
+{
+    margin-top: 50px;
+
+}

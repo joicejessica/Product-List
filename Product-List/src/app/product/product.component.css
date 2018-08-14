@@ -1,16 +1,18 @@
-table{
-    border-collapse: collapse;
-    width: 100%;
-}
-
 th{
     height: 50px;
+    text-align: center;
 }
 
 td {
     text-align: center;
 }
 
-button{
-    margin: 5px;
+[class="container"]{
+    margin-top: 30px;
 }
+
+[routerLink="/create"]{
+    float: left;
+}
+
+

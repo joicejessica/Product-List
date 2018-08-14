@@ -1,32 +1,34 @@
-<body>
-  <h2>Product Form</h2>
-  <div>
-    <form>
-      <div>
-        <label>Id</label>
-        <input type="number" id="id" name="id" [(ngModel)]="inputId" placeholder="Id"> 
-      </div>
+<app-header [isUserLoggedIn]="true" ></app-header>
+  <div class="container">
+    <p-toast></p-toast>
+    <form [formGroup]="productform" >
+    <p-panel header="Product Form">
+    <br>
+    <span class="ui-float-label">
+        <input formControlName="productId" [(ngModel)]="product.productId" pKeyFilter="num" id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">ProductId</label>
+        <p-message severity="error" text="ProductId is required" *ngIf="!productform.controls['productId'].valid&&productform.controls['productId'].dirty" ></p-message>
+    </span>
+    
+    <br>
+    <span class="ui-float-label">
+        <input formControlName="name" [(ngModel)]="product.name" pKeyFilter="alpha" id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">Name</label>
+        <p-message severity="error" text="Name is required" *ngIf="!productform.controls['name'].valid&&productform.controls['name'].dirty"></p-message>
+    </span>
 
-      <div>
-          <label>Product Id</label>
-          <input type="number" id="productId" name="productId" [(ngModel)]="inputProductid" placeholder="ProductId"> 
-      </div>
+    <br>
+    <span class="ui-float-label">
+        <input formControlName="price" [(ngModel)]="product.price" pKeyFilter="num" id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">Price</label>
+        <p-message severity="error" text="Price is required" *ngIf="!productform.controls['price'].valid&&productform.controls['price'].dirty"></p-message>
+    </span>
 
-      <div>
-          <label>Name</label>
-          <input type="text" id="name" name="name" [(ngModel)]="inputName" placeholder="Name"> 
-      </div>
-
-      <div>
-          <label>Price</label>
-          <input type="number" id="Price" name="Price" [(ngModel)]="inputPrice" placeholder="Price"> 
-      </div>
-
-      <br>
-      <div>
-          <button value="submit" (click)="create()">Create</button>
-          <button value="submit" (click)="goBack()">Back</button>
-      </div>
+    <br>
+    <div>
+        <button value="submit" (click)= "create()" [disabled]="!productform.valid" icon="pi pi-file"  pButton type="button" label="Save" class="ui-button-raised ui-button-success"></button>
+        <button value="submit" (click)="goBack()" icon="pi pi-arrow-left" pButton type="button" label="Back" class="ui-button-raised ui-button-primary"></button>
+    </div>
+    </p-panel>
     </form>
-  </div>
-</body>
+</div>
